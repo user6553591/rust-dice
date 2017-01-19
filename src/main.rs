@@ -1,4 +1,5 @@
 extern crate rand;
+extern crate clap;
 
 use rand::Rng;
 

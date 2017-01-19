@@ -5,6 +5,7 @@ authors = ["user6553591 <https://www.reddit.com/message/compose/?to=user6553591>
 
 [dependencies]
 rand = "0.3"
+clap = "2.20.0"
 
 [profile.release]
 lto = true
