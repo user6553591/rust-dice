@@ -1,7 +1,7 @@
 [package]
 name = "rust-dice"
 version = "0.1.0"
-authors = ["user6553591 <https://www.reddit.com/message/compose/?to=user6553591>"]
+authors = ["user6553591 <reddit.com/u/user6553591>"]
 
 [dependencies]
 rand = "0.3"
