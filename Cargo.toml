@@ -1,7 +1,11 @@
 [package]
 name = "rust-dice"
+description = "A simple CLI program that simulates dice. Written in Rust."
+repository = "https://github.com/user6553591/rust-dice"
 version = "0.1.0"
 authors = ["user6553591 <reddit.com/u/user6553591>"]
+readme = "README.md"
+license = "GPL-3.0"
 
 [dependencies]
 rand = "0.3"
