@@ -36,6 +36,12 @@ fn main() {
             .short("s")
             .long("sides")
             .multiple(false))
+        .arg(clap::Arg::with_name("rolls")
+            .help("The number of times the die is rolled")
+            .takes_value(true)
+            .short("r")
+            .long("rolls")
+            .multiple(false))
         .get_matches();
 
     let sides_input = matches.value_of("sides").unwrap_or("6");
@@ -49,10 +55,19 @@ fn main() {
         std::process::exit(1);
     }
 
+    let rolls_input = matches.value_of("rolls").unwrap_or("1");
+    let rolls: u8 = u8::from_str(rolls_input).unwrap_or_else(|_| {
+        println!("Error: '{}' not understood in context 'sides': Exiting.", rolls_input);
+        std::process::exit(1);
+    });
+
     let mut rng: rand::os::OsRng = rand::os::OsRng::new().unwrap_or_else(|_| {
         println!("Error: Could not initialize random number generator: Exiting.");
         std::process::exit(1);
     });
 
-    println!("The number {} came up.", rng.gen_range(0, sides) + 1);
+    println!("Rolling {} times:", rolls);
+    for _ in 0..rolls {
+        println!("The number {} came up.", rng.gen_range(0, sides) + 1);
+    }
 }
