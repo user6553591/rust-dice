@@ -38,8 +38,9 @@ fn main() {
             .multiple(false))
         .get_matches();
 
-    let sides: u8 = u8::from_str(matches.value_of("sides").unwrap_or("6")).unwrap_or_else(|_| {
-        println!("Error: Types mismatched: Exiting.");
+    let sides_input = matches.value_of("sides").unwrap_or("6");
+    let sides: u8 = u8::from_str(sides_input).unwrap_or_else(|_| {
+        println!("Error: '{}' not understood in context 'sides': Exiting.", sides_input);
         std::process::exit(1);
     });
 
