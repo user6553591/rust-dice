@@ -39,14 +39,14 @@ fn main() {
         .get_matches();
 
     let sides: u8 = u8::from_str(matches.value_of("sides").unwrap_or("6")).unwrap_or_else(|_| {
-        println!("Type mismatch: Exiting.");
+        println!("Error: Types mismatched: Exiting.");
         std::process::exit(1);
     });
 
     let mut rng: rand::os::OsRng = rand::os::OsRng::new().unwrap_or_else(|_| {
-        println!("Could not initialize random number generator: Exiting.");
+        println!("Error: Could not initialize random number generator: Exiting.");
         std::process::exit(1);
     });
 
-    println!("{} pips on top side.", rng.gen_range(0, sides) + 1);
+    println!("{} pip(s) on top side.", rng.gen_range(0, sides) + 1);
 }
