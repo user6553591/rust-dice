@@ -43,6 +43,11 @@ fn main() {
         std::process::exit(1);
     });
 
+    if (sides >= 2) == false {
+        println!("Error: Die needs two or more sides: Exiting.");
+        std::process::exit(1);
+    }
+
     let mut rng: rand::os::OsRng = rand::os::OsRng::new().unwrap_or_else(|_| {
         println!("Error: Could not initialize random number generator: Exiting.");
         std::process::exit(1);
