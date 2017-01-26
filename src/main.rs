@@ -54,5 +54,5 @@ fn main() {
         std::process::exit(1);
     });
 
-    println!("{} pip(s) on top side.", rng.gen_range(0, sides) + 1);
+    println!("The number {} came up.", rng.gen_range(0, sides) + 1);
 }
