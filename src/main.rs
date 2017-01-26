@@ -31,7 +31,7 @@ fn main() {
         .author(AUTHORS)
         .about(DESCRIPTION)
         .arg(clap::Arg::with_name("sides")
-            .help("The nuber of sides on the die")
+            .help("The number of sides on the die")
             .takes_value(true)
             .short("s")
             .long("sides")
