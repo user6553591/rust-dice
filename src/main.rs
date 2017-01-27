@@ -62,7 +62,7 @@ fn main() {
     });
 
     if (rolls >= 1) == false {
-        println!("Error: Die needs to be rolled at least once.: Exiting.");
+        println!("Error: Die needs to be rolled at least once: Exiting.");
         std::process::exit(1);
     }
 
