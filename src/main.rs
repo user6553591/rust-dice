@@ -71,7 +71,7 @@ fn main() {
         std::process::exit(1);
     });
 
-    println!("Rolling {} times:", rolls);
+    println!("Rolling {} time(s):", rolls);
     for _ in 0..rolls {
         println!("The number {} came up.", rng.gen_range(0, sides) + 1);
     }
