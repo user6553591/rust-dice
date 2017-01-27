@@ -61,6 +61,11 @@ fn main() {
         std::process::exit(1);
     });
 
+    if (rolls >= 1) == false {
+        println!("Error: Die needs to be rolled at least once.: Exiting.");
+        std::process::exit(1);
+    }
+
     let mut rng: rand::os::OsRng = rand::os::OsRng::new().unwrap_or_else(|_| {
         println!("Error: Could not initialize random number generator: Exiting.");
         std::process::exit(1);
