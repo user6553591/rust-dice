@@ -30,6 +30,12 @@ fn main() {
         .version(VERSION)
         .author(AUTHORS)
         .about(DESCRIPTION)
+        .arg(clap::Arg::with_name("quiet")
+            .help("Only output numbers")
+            .takes_value(false)
+            .short("q")
+            .long("quiet")
+            .multiple(false))
         .arg(clap::Arg::with_name("sides")
             .help("The number of sides on the die")
             .takes_value(true)
@@ -43,6 +49,8 @@ fn main() {
             .long("rolls")
             .multiple(false))
         .get_matches();
+
+    let quiet = matches.is_present("quiet");
 
     let sides_input = matches.value_of("sides").unwrap_or("6");
     let sides: u8 = u8::from_str(sides_input).unwrap_or_else(|_| {
@@ -71,8 +79,15 @@ fn main() {
         std::process::exit(1);
     });
 
-    println!("Rolling {} time(s), with a {} sided die...", rolls, sides);
+    if quiet == false {
+        println!("Rolling {} time(s), with a {} sided die...", rolls, sides);
+    }
     for _ in 0..rolls {
-        println!("The number {} came up.", rng.gen_range(0, sides) + 1);
+        let number = rng.gen_range(0, sides) + 1;
+        if matches.is_present("quiet") {
+            println!("{}", number);
+        } else {
+            println!("The number {} came up.", number);
+        }
     }
 }
