@@ -64,7 +64,7 @@ fn main() {
     }
 
     let rolls_input = matches.value_of("rolls").unwrap_or("1");
-    let rolls: u8 = u8::from_str(rolls_input).unwrap_or_else(|_| {
+    let rolls: u32 = u32::from_str(rolls_input).unwrap_or_else(|_| {
         println!("Error: '{}' not understood in context 'sides': Exiting.", rolls_input);
         std::process::exit(1);
     });
