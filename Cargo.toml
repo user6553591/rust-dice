@@ -10,6 +10,7 @@ license = "GPL-3.0"
 [dependencies]
 rand = "0.3"
 clap = "2.20.0"
+statistical = "0.1.1"
 
 [profile.release]
 lto = true

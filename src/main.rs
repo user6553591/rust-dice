@@ -16,6 +16,7 @@
 
 extern crate rand;
 extern crate clap;
+extern crate statistical;
 
 use rand::Rng;
 use std::str::FromStr;
