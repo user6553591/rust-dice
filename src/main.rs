@@ -26,6 +26,22 @@ const DESCRIPTION: &'static str = env!("CARGO_PKG_DESCRIPTION");
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 fn main() {
+    let mut rng: rand::os::OsRng = rand::os::OsRng::new().unwrap_or_else(|_| {
+        println!("Error: Could not initialize random number generator: Exiting.");
+        std::process::exit(1);
+    });
+
+    let test_iterations = 1_000_000;
+    let mut tally = vec![0.0, 0.0];
+    for _ in 0..test_iterations {
+        tally[rng.gen_range(0, 2)] += 1.0 / test_iterations as f32;
+    }
+    let error: f32 = (tally[0] - tally[1]).abs();
+    if error > 0.01 {
+        println!("Error: Something doesn't seem fair: Exiting.");
+        std::process::exit(1);
+    }
+
     let matches: clap::ArgMatches = clap::App::new(NAME)
         .version(VERSION)
         .author(AUTHORS)
@@ -73,11 +89,6 @@ fn main() {
         println!("Error: Die needs to be rolled at least once: Exiting.");
         std::process::exit(1);
     }
-
-    let mut rng: rand::os::OsRng = rand::os::OsRng::new().unwrap_or_else(|_| {
-        println!("Error: Could not initialize random number generator: Exiting.");
-        std::process::exit(1);
-    });
 
     if quiet == false {
         println!("Rolling {} time(s), with a {} sided die...", rolls, sides);
